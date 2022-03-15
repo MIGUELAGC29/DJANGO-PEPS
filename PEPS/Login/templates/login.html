@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>INICIO DE SESIÓN</h1>
+    <form method="POST" novalidate="">
+        {% csrf_token %}
+        {% if form.errors %}
+            <h5>Ha ocurrido un error al guardar el registro!!!</h5>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li> {{ error }} </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        {{ form.username }}
+        <br>
+        {{ form.password }}
+        <br>
+        <br>
+        <button type="submit">Inciar Sesión</button>
+    </form>
+
+</body>
+</html>

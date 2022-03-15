@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form action = "" method="POST" novalidate="">
+     {%  csrf_token %}
+     {{ form.non_field_errors }}
+     {% if form.errors %}
+            <h5>Ha ocurrido un error al guardar el registro!!!</h5>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li> {{ error }} </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+     <table>
+     {% for field in form %}
+     <tr>
+         <td> {{ field.label_tag }}</td>
+         <td>{{ field }}</td>
+     </tr>
+
+    {% endfor %}
+     </table>
+    <br>
+    <button type="submit">Crear Usuario</button>
+    <br>
+ </form>
+<br>
+<a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>
