@@ -1,5 +1,6 @@
 from django.urls import path
 from Login.views import *
+from App.views import *
 
 #from CRUD.APP.views import *
 

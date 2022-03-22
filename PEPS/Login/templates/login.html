@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>INICIO DE SESIÓN</h1>
-    <form method="POST" novalidate="">
+    <form method="POST" >
         {% csrf_token %}
         {% if form.errors %}
             <h5>Ha ocurrido un error al guardar el registro!!!</h5>
