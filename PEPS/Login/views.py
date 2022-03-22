@@ -10,7 +10,6 @@ from . import models, forms
 
 class InicioSesion(LoginView):
     template_name = 'login.html'
-
     #MANTENER AL USUARIO LOGEADO
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -23,6 +22,8 @@ class CrearUser(CreateView):
     form_class = forms.FormuluarioCrear
     template_name = "crear.html"
     success_url = reverse_lazy('listado_1')
+
+        
 
 def ListarUser(request):
     counter = 0
