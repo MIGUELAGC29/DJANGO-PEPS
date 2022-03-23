@@ -29,7 +29,7 @@ class CrearUser(CreateView):
    
         
 
-def ListarUser(request):
+"""def ListarUser(request):
     counter = 0
     if request.method == "POST" or request.method == "GET":
         users = models.Usuario.objects.all()
@@ -51,4 +51,4 @@ class EditarUser(UpdateView):
     model = models.Usuario
     form_class = forms.FormularioUsuario
     template_name = "edit.html"
-    success_url = reverse_lazy('listado_1')
+    success_url = reverse_lazy('listado_1')"""
