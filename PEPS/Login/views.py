@@ -8,6 +8,7 @@ from django.views.generic import *
 from django.urls import reverse_lazy
 from . import models, forms
 
+
 class InicioSesion(LoginView):
     template_name = 'login.html'
     #MANTENER AL USUARIO LOGEADO
@@ -17,11 +18,28 @@ class InicioSesion(LoginView):
         return super().dispatch(request, *args, **kwargs)
 
 
+
+
 class CrearUser(CreateView):
     model = models.Usuario
-    form_class = forms.FormuluarioCrear
+    form_class = forms.FormularioUsuario
     template_name = "crear.html"
-    success_url = reverse_lazy('listado_1')
+    #success_url = reverse_lazy('Home')
+    
+    def post(self,request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            nuevo_usuario = Usuario(
+                email = form.cleaned_data.get('email'),
+                username = form.cleaned_data.get('username'),
+                nombres = form.cleaned_data.get('nombres'),
+                apellidos = form.cleaned_data.get('apellidos'),
+            )
+            nuevo_usuario.set_password(form.cleaned_data.get('password1'))
+            nuevo_usuario.save()
+            return redirect('Home')
+        else:
+            return render(request, self.template_name,{'form':form})
 
         
 
@@ -45,6 +63,6 @@ class EliminarUser(DeleteView):
 
 class EditarUser(UpdateView):
     model = models.Usuario
-    form_class = forms.FormuluarioCrear
+    form_class = forms.FormularioUsuario
     template_name = "edit.html"
     success_url = reverse_lazy('listado_1')

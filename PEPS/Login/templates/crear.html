@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
- <form action = "" method="POST" novalidate="">
+ <form method="POST" >
      {%  csrf_token %}
      {{ form.non_field_errors }}
      {% if form.errors %}
@@ -17,16 +17,8 @@
                     {% endfor %}
                 {% endfor %}
             </ul>
-        {% endif %}
-     <table>
-     {% for field in form %}
-     <tr>
-         <td> {{ field.label_tag }}</td>
-         <td>{{ field }}</td>
-     </tr>
-
-    {% endfor %}
-     </table>
+      {% endif %}
+     {{ form.as_p }}
     <br>
     <button type="submit">Crear Usuario</button>
     <br>
