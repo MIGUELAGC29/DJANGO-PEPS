@@ -36,7 +36,7 @@ class Usuario(AbstractBaseUser):
     nombres = models.CharField('Nombres', max_length=200, blank = True, null = True)
     apellidos = models.CharField('Apellidos', max_length=200, blank = True, null = True)
     usuario_activo = models.BooleanField(default=True)
-    usuario_administrador = models.BooleanField(default=True)
+    usuario_administrador = models.BooleanField(default=False)
     objects = UsuarioManager()
     
     USERNAME_FIELD = 'username'
