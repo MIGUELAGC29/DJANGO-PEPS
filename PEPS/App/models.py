@@ -20,7 +20,7 @@ class Producto(models.Model):
     nombre = models.CharField('Nombre', max_length = 100, blank=True, null=True)
     precio = models.PositiveIntegerField('Precio', default = 1, blank = True )
     costo = models.PositiveIntegerField('Costo', default = 1, blank = True )
-    unidades = models.PositiveIntegerField('Costo', default = 1, blank = True )
+    unidades = models.PositiveIntegerField('Unidades', default = 1, blank = True )
     descripcion = models.CharField('Descripcion', max_length = 200, blank=True, null=True)
     Almacen = models.ForeignKey(Almacen, on_delete = models.CASCADE)
     Proveedor = models.ForeignKey(Proveedor, on_delete = models.CASCADE)

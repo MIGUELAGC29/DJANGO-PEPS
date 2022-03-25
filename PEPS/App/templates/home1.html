@@ -6,7 +6,27 @@
 </head>
 <body>
     <p>hola mundototototoo</p>
-    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+    <a href="{% url 'Logout' %}">Cerrar Sesión</a>
+
+    <ul>
+        <li>Usuario: {{username}}</li>
+        {% for almacen in almacenes %}
+            <p>Numero de almacen: </p>
+            {% for producto in productos %}
+                <li>{{producto.nombre}}</li>
+            {% endfor %}
+        </ul>
+
+	    {% endfor %}
+
+
+
+
+
+
+
+
+       
 
 </body>
 </html>

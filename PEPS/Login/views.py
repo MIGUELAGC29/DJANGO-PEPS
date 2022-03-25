@@ -16,6 +16,7 @@ class InicioSesion(LoginView):
         if request.user.is_authenticated:
             return redirect('Home')
         return super().dispatch(request, *args, **kwargs)
+    
 
 
 
@@ -24,7 +25,7 @@ class CrearUser(CreateView):
     model = models.Usuario
     form_class = forms.FormularioUsuario
     template_name = "crear.html"
-    success_url = reverse_lazy('Home')
+    success_url = reverse_lazy('Login')
     
    
         

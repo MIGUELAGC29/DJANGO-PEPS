@@ -3,6 +3,6 @@ from App.views import *
 
 
 urlpatterns = [
-    path('home/', HolaMundo, name = "Home"),
+    path('home/', Home, name = "Home"),
     
 ]
