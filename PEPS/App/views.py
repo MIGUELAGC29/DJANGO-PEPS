@@ -17,11 +17,34 @@ def Home(request):
         almacenes = Almacen.objects.filter(usuario_id = ide)
         num_almacen = len(almacenes)
         print(num_almacen)
-        print(almacen.id)
-        productos = Producto.objects.filter(Almacen_id = almacen.id)
+        print('--------------------')
+        nombre_productos = {}
+        
+        for almacen in almacenes:
+            lista_nombre_productos = []
+            lista_precio_productos = []
+            lista_costo_productos = []
+            lista_unidades_productos = []
+            lista_descripcion_productos = []
+            lista_proveedor_productos = []
+            #print(almacen.id)
+            producto_almacen = Producto.objects.filter(Almacen_id = almacen.id)
+            for producto in producto_almacen:
+                lista_nombre_productos.append(producto.nombre)
+                lista_precio_productos.append(producto.precio)
+                lista_costo_productos.append(producto.costo)
+                lista_unidades_productos.append(producto.unidades)
+                lista_descripcion_productos.append(producto.descripcion)
+                
+                
+            nombre_productos[almacen.id] = (lista_nombre_productos)
+        print(nombre_productos.values())
+            
+
+    
         return render(request, 'home1.html', {'username':username,
                                              'almacenes':almacenes,
-                                             'productos':productos})
+                                             'nombre_productos':nombre_productos})
            
         
     else:

@@ -5,20 +5,28 @@
     <title>Inicio</title>
 </head>
 <body>
-    <p>hola mundototototoo</p>
-    <a href="{% url 'Logout' %}">Cerrar Sesión</a>
+    <h1>Usuario: {{username}}</h1>
+   
 
-    <ul>
-        <li>Usuario: {{username}}</li>
+    
         {% for almacen in almacenes %}
-            <p>Numero de almacen: </p>
-            {% for producto in productos %}
-                <li>{{producto.nombre}}</li>
-            {% endfor %}
-        </ul>
+            <p>Nombre de almacen: {{almacen.nombre}}</p>
+            <ul>
+                {% for key, valor in nombre_productos.items %}
+                    {% if almacen.id == key %}
+                        {% for producto in valor %}
+                            <ul>
+                                <li>{{producto}}</li>
+                            </ul>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
 	    {% endfor %}
-
+    
+    
+    <a href="{% url 'Logout' %}">Cerrar Sesión</a>
 
 
 
