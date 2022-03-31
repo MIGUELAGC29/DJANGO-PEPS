@@ -16,8 +16,8 @@
                     <tr>
                         <th></th>
                         <th>Producto</th>
-                        <th>Precio</th>
                         <th>Costo</th>
+                        <th>Precio</th>
                         <th>Unidades</th>
                         <th>Descripción</th>
                         <th>Opciones</th>
@@ -40,19 +40,27 @@
                     <tr>
                         <td>Total</td>
                         <td></td>
-                        <td>$${% for llave,value in precio.items %}
+                        <td>$$
+                            {% for llave,value in precio.items %}
                                 {% if llave.id ==  key.id%}
                                     {{value}}
-                                    {% endif %}   
+                                {% endif %}   
                             {% endfor %}
                         </td>
-                        <td>$${% for llave,value in costo.items %}
-                            {% if llave.id ==  key.id%}
-                                {{value}}
+                        <td>$$
+                            {% for llave,value in costo.items %}
+                                {% if llave.id ==  key.id%}
+                                    {{value}}
                                 {% endif %}   
-                        {% endfor %}
+                            {% endfor %}
                         </td>
-                        <td></td>
+                        <td>Unidades: 
+                            {% for llave,value in unidades.items %}
+                                {% if llave.id ==  key.id%}
+                                    {{value}}
+                                {% endif %}   
+                            {% endfor %}
+                        </td>
                         <td></td>
 
                     </tr>
