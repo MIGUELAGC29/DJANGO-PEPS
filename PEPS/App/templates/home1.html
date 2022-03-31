@@ -9,24 +9,62 @@
    
 
     
-        {% for almacen in almacenes %}
-            <p>Nombre de almacen: {{almacen.nombre}}</p>
-            <ul>
-                {% for key, valor in nombre_productos.items %}
-                    {% if almacen.id == key %}
-                        {% for producto in valor %}
-                            <ul>
-                                <li>{{producto}}</li>
-                            </ul>
+        {% for key,valor in d.items %}
+            <p>Nombre de almacen: {{key.nombre}}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Costo</th>
+                        <th>Unidades</th>
+                        <th>Descripción</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in valor %}
+                        {% if key.id == producto.Almacen_id %}
+                        <tr>
+                            <td></td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.costo}}</td>
+                            <td>{{producto.unidades}}</td>
+                            <td>{{producto.descripcion}}</td>
+                            <td><a href="">Agregar Unidades</a><a href="">Quitar Unidades</a></td>
+                        </tr>
+                        {% endif %}   
+                    {% endfor %}
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <td>$${% for llave,value in precio.items %}
+                                {% if llave.id ==  key.id%}
+                                    {{value}}
+                                    {% endif %}   
+                            {% endfor %}
+                        </td>
+                        <td>$${% for llave,value in costo.items %}
+                            {% if llave.id ==  key.id%}
+                                {{value}}
+                                {% endif %}   
                         {% endfor %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                        </td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>    
+
 
 	    {% endfor %}
     
     
     <a href="{% url 'Logout' %}">Cerrar Sesión</a>
+    <a href="">Agregar Almacén</a>
 
 
 
