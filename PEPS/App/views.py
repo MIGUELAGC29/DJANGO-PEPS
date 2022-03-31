@@ -23,6 +23,8 @@ def Home(request):
             d[almacen] = productos
             lista_precio = []
             lista_costo = []
+            lista_unidades = []
+            resultado_unidades = 0
             resultado_precio = 0
             resultado_costo = 0
             for producto in productos:
