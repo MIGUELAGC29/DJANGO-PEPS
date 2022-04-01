@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Login.urls')),
     path('peps/', include('App.urls')),
+    path('almacen/', include('Almacen.urls'))
 ]

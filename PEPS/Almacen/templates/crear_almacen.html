@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario POST</title>
+</head>
+<body>
+    <h1>Formulario Con Peticiones POST</h1>
+    <br>
+    <form action="{% url 'MostrarFormulario' %}" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Nombre: </th>
+                <th><input type="text" name = "nombre"></th>
+            </tr>
+            <tr>
+                <th>Cantidad: </th>
+                <th><input type="number" name = "cantidad"></th>
+            </tr>
+             <tr>
+                <th><input type="submit" value = "Guardar" ></th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

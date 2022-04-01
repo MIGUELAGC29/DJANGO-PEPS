@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 
 from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse
+
 from django.contrib.auth.views import LoginView, LogoutView
 from django.template.context_processors import request
 from django.views.generic import *
