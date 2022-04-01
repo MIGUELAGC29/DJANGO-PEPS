@@ -10,7 +10,7 @@
 
     
         {% for key,valor in d.items %}
-            <p>Nombre de almacen: {{key.nombre}} <a href="">Eliminar Almacén</a></p>
+            <p>Nombre de almacen: {{key.nombre}} <a href="{% url 'Eliminar_Almacen' key.id %}">Eliminar Almacén</a></p>
             <table>
                 <thead>
                     <tr>

@@ -88,6 +88,7 @@ def Guardar_Almacen(request):
     
 
 
-def Eliminar_Almacen(request):
-        
-    return render(request, 'mostrar.html', )
+def Eliminar_Almacen(request, id):
+    variable = id
+    
+    return render(request, 'mostrar.html', {'variable':variable})
