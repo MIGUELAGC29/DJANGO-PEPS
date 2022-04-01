@@ -76,7 +76,7 @@ def Guardar_Almacen(request):
         
 
     else:
-        return HttpResponse("<h2> NO SE PUDO GUARDAR AL USUARIO </h2>")
+        return HttpResponse("<h2> NO SE PUDO GUARDAR EL ALMACÉN</h2>")
 
     return render(request, 'home.html', {'username':username,
                                              'almacenes':almacenes,
@@ -86,4 +86,8 @@ def Guardar_Almacen(request):
                                              'unidades':unidades,}) #mandamos todo lo necesario al template
     
     
-    
+
+
+def Eliminar_Almacen(request):
+        
+    return render(request, 'mostrar.html', )
