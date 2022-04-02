@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Producto</title>
+</head>
+<body>
+    <h1>Nuevo Producto</h1>
+    <br>
+    <form action="{% url 'Guardar_Producto' id_almacen %}" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Nombre: </th>
+                <th><input type="text" name = "nombre"></th>
+            </tr>
+            <tr>
+                <th>Precio: </th>
+                <th><input type="number" name = "precio"></th>
+            </tr>
+            <tr>
+                <th>Costo: </th>
+                <th><input type="number" name = "costo"></th>
+            </tr>
+            <tr>
+                <th>Unidades: </th>
+                <th><input type="number" name = "unidades"></th>
+            </tr>
+            <tr>
+                <th>Descripcion: </th>
+                <th><input type="textarea" name = "descripcion"></th>
+            </tr>
+             <tr>
+                <th><input type="submit" value = "Guardar" ></th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Login',
     'App',
     'Almacen',
+    'Producto',
 ]
 
 MIDDLEWARE = [
