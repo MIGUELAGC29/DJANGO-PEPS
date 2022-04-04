@@ -40,25 +40,25 @@ class FormularioUsuario(forms.ModelForm):
         widgets = {
             'email' : forms.EmailInput(
                 attrs = {
-                    #'class' : 'form-control',
+                    'class' : 'form-control',
                     'placeholder' : 'Correo Electronico',
                 }
             ),
             'nombres' : forms.TextInput(
                 attrs = {
-                    #'class' : 'form-control',
+                    'class' : 'form-control',
                     'placeholder' : 'Ingrese su nombre',
                 }
             ),
             'apellidos' : forms.TextInput(
                 attrs = {
-                    #'class' : 'form-control',
+                    'class' : 'form-control',
                     'placeholder' : 'Ingrese sus apellidos',
                 }
             ),
-            'username' : forms.TextInput(
+            'username' : forms.NumberInput(
                 attrs = {
-                    #'class' : 'form-control',
+                    'class' : 'form-control',
                     'placeholder' : 'Ingrese su nombre',
                 }
             )
