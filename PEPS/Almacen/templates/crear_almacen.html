@@ -1,28 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario POST</title>
+    <title>Crear Almacén</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
+    
 </head>
-<body>
-    <h1>Formulario Con Peticiones POST</h1>
-    <br>
-    <form action="{% url 'Guardar_Almacen' %}" method="POST">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <th>Nombre: </th>
-                <th><input type="text" name = "nombre"></th>
-            </tr>
-            <tr>
-                <th>Cantidad: </th>
-                <th><input type="number" name = "cantidad"></th>
-            </tr>
-             <tr>
-                <th><input type="submit" value = "Guardar" ></th>
-            </tr>
-        </table>
-    </form>
+<body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
+    <div class = "col-auto bg-primary p-5 text-center rounded-3 shadow-lg">
+        <h1 class = "text-light sesion mb-5">CREAR ALMACÉN</h1>
+        <form action="{% url 'Guardar_Almacen' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label class="form-label text-light m-2">Nombre: </label></td>
+                    <td><input class="form-control" type="text" name = "nombre"></td>
+                </tr>
+                <tr>
+                    <td><label class="form-label text-light m-2">Cantidad: </label></td>
+                    <td><input class="form-control" type="number" name = "cantidad"></td>
+                </tr>
+            </table>
+            <div class = "row">
+                <input class="btn btn-success mt-3" type="submit" value = "Guardar" >
+             </div>
+             <div class = "row">
+                <a class = "btn btn-danger mt-3 text-light" href="{% url 'Home' %}">Cancelar</a>
+             </div>
+        </form>
 
+    </div>
+    
+
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

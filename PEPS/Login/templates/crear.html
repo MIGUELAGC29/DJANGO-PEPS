@@ -1,29 +1,54 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
+    
 </head>
-<body>
- <form method="POST" >
-     {%  csrf_token %}
-     {{ form.non_field_errors }}
-     {% if form.errors %}
-            <h5>Ha ocurrido un error al guardar el registro!!!</h5>
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li> {{ error }} </li>
+<body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
+    <div class = "col-auto bg-primary p-5 text-center rounded-3 shadow-lg">
+        <h1 class = "text-light sesion mb-5">CREAR USUARIO</h1>
+        <form method="POST" >
+            {%  csrf_token %}
+            {{ form.non_field_errors }}
+            {% if form.errors %}
+                <h5>Ha ocurrido un error al guardar el registro!!!</h5>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li> {{ error }} </li>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
-            </ul>
-      {% endif %}
-     {{ form.as_p }}
-    <br>
-    <button type="submit">Crear Usuario</button>
-    <br>
- </form>
-<br>
-<a href="{% url 'Logout' %}">Cancelar</a>
+                </ul>
+            {% endif %}
+            <table>
+                {% for field in form %}
+                <tr>
+                   
+                    <td><label class="form-label text-light m-2">{{ field.label_tag }}</label></td>
+                    <td>{{ field }}</td>
+                </tr>
+           
+               {% endfor %}
+                </table>
+            <br>
+            <div class = "row">
+               <button class="btn btn-success" type="submit">Crear Usuario</button>
+            </div>
+            <div class = "row">
+                <a class="btn btn-danger mt-4 " href="{% url 'Logout' %}">Cancelar</a>
+            </div>
+        </form>
+       <br>
+       
+    </div>
+ 
+
+
+
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

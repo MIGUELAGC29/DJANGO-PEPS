@@ -1,40 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Producto</title>
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
 </head>
-<body>
-    <h1>Nuevo Producto</h1>
+<body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
+    <div class = "col-auto bg-primary p-5 text-center rounded-3 shadow-lg">
+        <h1 class = "text-light sesion mb-5">NUEVO PRODUCTO</h1>
     <br>
     <form action="{% url 'Guardar_Producto' id_almacen %}" method="POST">
         {% csrf_token %}
         <table>
             <tr>
-                <th>Nombre: </th>
-                <th><input type="text" name = "nombre"></th>
+                <td><label class="form-label text-light m-2">Nombre: </label></td>
+                <td><input class="form-control" type="text" name = "nombre"></td>
             </tr>
             <tr>
-                <th>Precio: </th>
-                <th><input type="number" name = "precio"></th>
+                <td><label class="form-label text-light m-2">Precio: </label></td>
+                <td><input class="form-control" type="number" name = "precio"></td>
             </tr>
             <tr>
-                <th>Costo: </th>
-                <th><input type="number" name = "costo"></th>
+                <td><label class="form-label text-light m-2">Costo: </label></td>
+                <td><input class="form-control" type="number" name = "costo"></td>
             </tr>
             <tr>
-                <th>Unidades: </th>
-                <th><input type="number" name = "unidades"></th>
+                <td><label class="form-label text-light m-2">Unidades: </label></td>
+                <td><input class="form-control" type="number" name = "unidades"></td>
             </tr>
             <tr>
-                <th>Descripcion: </th>
-                <th><input type="textarea" name = "descripcion"></th>
-            </tr>
-             <tr>
-                <th><input type="submit" value = "Guardar" ></th>
+                <td><label class="form-label text-light m-2">Descripción: </label></td>
+                <td><input class="form-control" style="height: 100px" type="textarea" name = "descripcion"></td>
             </tr>
         </table>
+        <div class = "row">
+            <input class="btn btn-success mt-3" type="submit" value = "Guardar" >
+         </div>
+         <div class = "row">
+            <a class = "btn btn-danger mt-3 text-light" href="{% url 'Home' %}">Cancelar</a>
+         </div>
     </form>
+    </div>
+    
 
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

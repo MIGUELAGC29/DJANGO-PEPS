@@ -56,7 +56,7 @@ class FormularioUsuario(forms.ModelForm):
                     'placeholder' : 'Ingrese sus apellidos',
                 }
             ),
-            'username' : forms.NumberInput(
+            'username' : forms.TextInput(
                 attrs = {
                     'class' : 'form-control',
                     'placeholder' : 'Ingrese su nombre',

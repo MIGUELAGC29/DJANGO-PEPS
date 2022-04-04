@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <!-- <link rel="stylesheet" type="text/css" href = "{% static './styles.css' %}"> -->
     <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href = "{% static './styles.css' %}">
+    
 </head>
 <body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
     <div class = "col-auto bg-primary p-5 text-center rounded-3 shadow-lg">
@@ -26,7 +27,7 @@
                 <table>
                     <tr>
                         <td><label class="form-label text-light">Usuario: </label></td>
-                        <td>{{ form.username }}</td>
+                        <td class="form-label" >{{ form.username }}</td>
                     </tr>
                     <tr>
                         <td><label class="form-label text-light">Contraseña: </label></td>
@@ -34,7 +35,7 @@
                     </tr>
                 </table>
                 <div class = "row">
-                    <button class="btn btn-success mt-3" type="submit">Inciar Sesión</button>
+                    <button class="btn btn-success mt-3" type="submit">Iniciar Sesión</button>
                 </div>
                 <div class = "row">
                     <a class = "mt-3 text-light" href="{% url 'Crear' %}">Registrarme</a>
