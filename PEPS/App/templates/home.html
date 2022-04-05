@@ -1,10 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
+    <script src="https://kit.fontawesome.com/9a2b698299.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header class="row justify-content-between content-fluid bg-primary">
+        <h1 class="col-1 m-1 mx-3 text-light p-2 fs-5 ">Home</h1>
+        <a class="col-1 text-light text-end p-2  me-3 fs-5" href="{% url 'Logout' %}"><i class="fa-solid fa-power-off"></i></a>
+    </header>
     <h1>Usuario: {{username}}</h1>
    
 
@@ -72,7 +79,7 @@
 	    {% endfor %}
     
     
-    <a href="{% url 'Logout' %}">Cerrar Sesión</a>
+    
     <a href="{% url 'Crear_Almacen' %}">Agregar Almacén</a>
     
 
@@ -85,5 +92,7 @@
 
        
 
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
