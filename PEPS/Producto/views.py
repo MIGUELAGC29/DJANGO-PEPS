@@ -6,8 +6,19 @@ from App.models import Almacen, Producto, Proveedor
 
 
 def Crear_Producto(request, id):
+    #aqui va el caso de uso de ver la capacidada del almacen y ver si aun caben productos
+    """
+    1.- obtener id de usuario
+    2.- obtener el id del almacen (id_almacen = id)
+    3.- obtener la capacidad del almacen
+    4.- contar todas las unidades de los productos 
+    5.- hacer la resta y ver si hay espacio
+    6.- si es acertado pasamos a agregar el producto
+    7.- si no, no se deja hacer el producto    
+    """
+    
     id_almacen = id
-    return render(request, 'crear_producto.html', {'id_almacen':id_almacen,})
+    return render(request, 'crear_producto.html', {'id_almacen':id_almacen,}) #aqui mandamos al template el id del almacen para agregarlo al guardar producto
 
 
 

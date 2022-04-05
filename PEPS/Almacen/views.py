@@ -17,7 +17,13 @@ from . import forms
 
 
 def Vista_Formulario_Almacen(request):
-    
+    #aqui va el caso de uso de solo 5 almacenes
+    """
+    1.- obtener id del usuario
+    2.- contar cuantos almacenes tiene
+    3.- si tiene menos de 5 se procede a mandar al formulario 'crear_almacen.html'
+    4.- si ya tiene 5 o mas se procede a no dejar hacer el almacen 
+    """
     return render(request, 'crear_almacen.html')
 
 def Guardar_Almacen(request):

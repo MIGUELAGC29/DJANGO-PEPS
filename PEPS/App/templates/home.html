@@ -10,15 +10,18 @@
 <body>
     <header class="row justify-content-between content-fluid bg-primary">
         <h1 class="col-1 m-1 mx-3 text-light p-2 fs-5 ">Home</h1>
-        <a class="col-1 text-light text-end p-2  me-3 fs-5" href="{% url 'Logout' %}"><i class="fa-solid fa-power-off"></i></a>
+        <p class="col-1  text-end p-2 mb-0 me-3 fs-5"><a class = "btn btn-primary text-light" href="{% url 'Logout' %}"><i title="Cerrar Sesión" class="fa-solid fa-power-off"></i></a>
     </header>
-    <h1>Usuario: {{username}}</h1>
+    <h1 class = "fs-5 m-3">Bienvenido {{username}}</h1>
    
 
     
         {% for key,valor in d.items %}
-            <p>Nombre de almacen: {{key.nombre}} <a href="{% url 'Eliminar_Almacen' key.id %}">Eliminar Almacén</a></p>
-            <table>
+            <div class = "rounded-3 row text-center justify-content-center bg-primary me-3 ms-3">
+                <p class = "fs-6 col-6 text-start text-light mb-0 pt-3">Nombre de almacen: {{key.nombre}}</p>
+                <p class = "fs-6 col-6 mb-0 text-end  px-4 py-2"><a class = "btn btn-primary text-light" href="{% url 'Eliminar_Almacen' key.id %}">Eliminar Almacén <i title="Eliminar Almacen" class="fa-solid fa-trash-can"></i></a></p>
+            </div>
+            <table class = "table text-center ">
                 <thead>
                     <tr>
                         <th></th>
@@ -28,7 +31,7 @@
                         <th>Unidades</th>
                         <th>Descripción</th>
                         <th>Opciones</th>
-                        <th><a href="{% url 'Crear_Producto' key.id %}">Agregar Producto</a>
+                        <th><a title="Agregar Producto" class = "btn btn-success" href= "{% url 'Crear_Producto' key.id %}"> Agregar Producto <i class="fa-solid fa-plus"></i></a>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,34 +44,36 @@
                             <td>{{producto.costo}}</td>
                             <td>{{producto.unidades}}</td>
                             <td>{{producto.descripcion}}</td>
-                            <td><a href="">Agregar Unidades</a><a href="">Quitar Unidades</a></td>
+                            <td><a class = "m-0 btn btn-success fs-4" href=""><i class="fa-solid fa-square-plus"></i></a><a class = "ms-2 btn btn-danger fs-4" href="">  <i class="fa-solid fa-square-minus"></i></a></td>
                         </tr>
                         {% endif %}   
                     {% endfor %}
-                    <tr>
+                    <tr class="table-danger">
                         <td>Total</td>
                         <td></td>
-                        <td>$$
+                        <td><i class="fa-solid fa-dollar-sign"></i>
                             {% for llave,value in precio.items %}
                                 {% if llave.id ==  key.id%}
                                     {{value}}
                                 {% endif %}   
                             {% endfor %}
                         </td>
-                        <td>$$
+                        <td><i class="fa-solid fa-dollar-sign"></i>
                             {% for llave,value in costo.items %}
                                 {% if llave.id ==  key.id%}
                                     {{value}}
                                 {% endif %}   
                             {% endfor %}
                         </td>
-                        <td>Unidades: 
+                        <td><i class="fa-solid fa-equals"></i> 
                             {% for llave,value in unidades.items %}
                                 {% if llave.id ==  key.id%}
                                     {{value}}
                                 {% endif %}   
                             {% endfor %}
                         </td>
+                        <td></td>
+                        <td></td>
                         <td></td>
 
                     </tr>
@@ -80,7 +85,7 @@
     
     
     
-    <a href="{% url 'Crear_Almacen' %}">Agregar Almacén</a>
+    <a class = "ms-3 btn btn-warning" href="{% url 'Crear_Almacen' %}">Agregar Almacén <i class="fa-solid fa-plus"></i></a>
     
 
 
