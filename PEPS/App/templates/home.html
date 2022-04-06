@@ -44,7 +44,7 @@
                             <td>{{producto.costo}}</td>
                             <td>{{producto.unidades}}</td>
                             <td>{{producto.descripcion}}</td>
-                            <td><a class = "m-0 btn btn-success fs-4" href=""><i class="fa-solid fa-square-plus"></i></a><a class = "ms-2 btn btn-danger fs-4" href="">  <i class="fa-solid fa-square-minus"></i></a></td>
+                            <td><a class = "m-0 btn btn-success fs-4" href="{% url 'Agregar_Unidades' producto.id %}"><i class="fa-solid fa-square-plus"></i></a> <a class = "ms-2 btn btn-danger fs-4" href="{% url 'Quitar_Unidades' producto.id %}">  <i class="fa-solid fa-square-minus"></i></a></td>
                         </tr>
                         {% endif %}   
                     {% endfor %}

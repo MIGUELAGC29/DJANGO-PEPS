@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Almacén</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
+    
+</head>
+<body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
+    <div class = "col-auto bg-primary p-5 text-center rounded-3 shadow-lg">
+        <h1 class = "text-light sesion mb-5">AGREGAR UNIDADES</h1>
+        <form action="{% url 'Guardar_Producto2' id_producto %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label class="form-label text-light m-2">Cantidad a Agregar: </label></td>
+                    <td><input class="form-control" type="number" name = "unidades"></td>
+                </tr>
+            </table>
+            <div class = "row">
+                <input class="btn btn-success mt-3" type="submit" value = "Guardar" >
+             </div>
+             <div class = "row">
+                <a class = "btn btn-danger mt-3 text-light" href="{% url 'Home' %}">Cancelar</a>
+             </div>
+        </form>
+
+    </div>
+    
+
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
