@@ -8,15 +8,11 @@ from App.models import Producto, Proveedor
 from . import forms
 
 
-# Create your views here.
-"""class CrearAlmacen(CreateView):
-    model = Almacen
-    form_class = forms.FormularioCrearAlmacen
-    template_name = "crear_almacen.html"
-    succes_url = reverse_lazy('Home')"""
 
 
 def Vista_Formulario_Almacen(request):
+    
+    
     #aqui va el caso de uso de solo 5 almacenes
     """
     1.- obtener id del usuario
@@ -24,7 +20,15 @@ def Vista_Formulario_Almacen(request):
     3.- si tiene menos de 5 se procede a mandar al formulario 'crear_almacen.html'
     4.- si ya tiene 5 o mas se procede a no dejar hacer el almacen 
     """
-    return render(request, 'crear_almacen.html')
+    username = request.user.username #se obtiene el username del usuario que entro en sesión
+    ide = request.user.id #se obtiene el id del ususario
+    almacenes = Almacen.objects.filter(usuario_id = ide) #obtenemos que almacenes tiene cada usuario 
+    print(almacenes)
+    num_almacen = len(almacenes) #obtenemos el numero de almacenes
+    if(num_almacen >= 5):
+        return render(request, 'nosepudo.html') #modificar para mostrar alertas
+    else:
+        return render(request, 'crear_almacen.html')
 
 def Guardar_Almacen(request):
     if request.method == "POST" or request.method == "GET":
