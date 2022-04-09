@@ -30,18 +30,29 @@ def Guardar_Producto(request, id):
         unidades = request.POST['unidades']
         descripcion = request.POST['descripcion']
         id_almacen = id
-        proveedor = 3
-        producto = Producto(
-            nombre = nombre,
-            precio = precio,
-            costo = costo,
-            unidades = unidades,
-            descripcion = descripcion,
-            Almacen_id = id_almacen,
-            Proveedor_id = proveedor,
-        )
-        producto.save()
+        proveedor = 3 #queda privicional
         
+        almacen = Almacen.objects.get(id = id_almacen)
+        capacidad = almacen.capacidad
+        
+        if(int(precio) < int(costo)):
+            return render(request, 'no_precio.html', {'id_almacen':id_almacen,})
+        else:
+            if (int(unidades) <= 0):
+                return render(request, 'no_mayorcero.html', {'id_almacen':id_almacen,})
+            else:
+                if(int(unidades) > int(capacidad)):
+                    return render(request, 'no_unidades.html', {'id_almacen':id_almacen,})
+                else:
+                    producto = Producto(
+                    nombre = nombre,
+                    precio = precio,
+                    costo = costo,
+                    unidades = unidades,
+                    descripcion = descripcion,
+                    Almacen_id = id_almacen,
+                    Proveedor_id = proveedor,)
+                    producto.save()  
         username = request.user.username #se obtiene el username del usuario que entro en sesión
         ide = request.user.id #se obtiene el id del ususario
         almacenes = Almacen.objects.filter(usuario_id = ide) #obtenemos que almacenes tiene cada usuario 
@@ -113,19 +124,41 @@ def Quitar_Unidades(request, id):
 def Guardar_Producto2(request, id):
     id_producto = id
     producto = Producto.objects.get(id = id_producto)
-    unidades_last = producto.unidades 
-    unidades_now = request.POST['unidades']
+    id_alma = producto.Almacen_id
+    productos = Producto.objects.filter(Almacen_id = id_alma)
     
-    unidades_total = int(unidades_last) + int(unidades_now)
+    total_capacidad = []       #obtenemos la capacidad actual del almacen
+    resultado_capacidad = 0
+    for producto in productos:
+        total_capacidad.append(producto.unidades)
+    for prec in total_capacidad:
+        resultado_capacidad += int(prec)
+            
+
+    pro_almacen = Almacen.objects.get(id = id_alma) #obtenemos la capacidad total del almacen actual
+    capaci = pro_almacen.capacidad
     
-    producto.unidades = unidades_total
     
-    producto.save()
+    
+    unidades_last = producto.unidades        #ultimas unidades del producto
+    unidades_now = request.POST['unidades']  #unidades ingresadas por el usuario
+    
+    unidades_total = int(unidades_last) + int(unidades_now)  #ultimas unidades mas las unidades ingresadas por el usuario hacia el producto
+    if(int(capaci) < (int(resultado_capacidad) + int(unidades_now))):
+        return render(request, 'no_agregar.html', {'id_producto':id_producto,})
+    else:
+        producto.unidades = unidades_total #actualizamos las unidades
+        producto.save() #guardamos el producto
+    
+    
+
+        
+    
     
     username = request.user.username #se obtiene el username del usuario que entro en sesión
     ide = request.user.id #se obtiene el id del ususario
     almacenes = Almacen.objects.filter(usuario_id = ide) #obtenemos que almacenes tiene cada usuario 
-    print(almacenes)
+    #print(almacenes)
     num_almacen = len(almacenes) #obtenemos el numero de almacenes
         
     d = {} #diccionario para extraer los productos: la key del diccionario es el numero de almacen y el valor son todos los productos
@@ -187,9 +220,14 @@ def Guardar_Producto3(request, id):
     
     unidades_total = int(unidades_last) - int(unidades_now)
     
-    producto.unidades = unidades_total
-    
-    producto.save()
+    if(int(unidades_last) < int(unidades_now)):      #si las unidades ingresadas por el usuario son mayores a las unidades actuales del producto se manda a pagina de error
+        return render(request, 'no_menor_actual.html', {'unidades_last':unidades_last,
+                                                        'id_producto': id_producto})
+    elif(int(unidades_total) == 0): #si las unidades restadas en total son cero se elimina el producto
+        producto.delete()
+    else:
+        producto.unidades = unidades_total #si esta en los limites se guarda el producto y listo
+        producto.save()
     
     username = request.user.username #se obtiene el username del usuario que entro en sesión
     ide = request.user.id #se obtiene el id del ususario

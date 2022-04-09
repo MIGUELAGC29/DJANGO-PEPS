@@ -26,7 +26,7 @@ def Vista_Formulario_Almacen(request):
     print(almacenes)
     num_almacen = len(almacenes) #obtenemos el numero de almacenes
     if(num_almacen >= 5):
-        return render(request, 'nosepudo.html') #modificar para mostrar alertas
+        return render(request, 'no_almacen.html') #modificar para mostrar alertas
     else:
         return render(request, 'crear_almacen.html')
 

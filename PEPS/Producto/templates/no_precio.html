@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>No más Almacén</title>
+    <link rel="stylesheet" href = "{% static './bootstrap/css/bootstrap.min.css' %}">
+    
+</head>
+<body class = "m-0 vh-100 row justify-content-center align-items-center bg-light">
+    <div class = "col-auto bg-danger p-5 text-center rounded-3 shadow-lg">
+        <h1 class = "text-light sesion mb-5">EL PRECIO DEBE SER MAYOR QUE EL COSTO</h1>
+        <div class = "row">
+            <a class = "btn btn-secondary mt-3 text-light" href="{% url 'Crear_Producto' id_almacen %}">Ok</a>
+        </div>
+    </div>
+    
+
+    <script type="text/javascript" src="{% static './jquery/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
